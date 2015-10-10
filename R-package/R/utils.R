@@ -1,12 +1,22 @@
 #' @importClassesFrom Matrix dgCMatrix dgeMatrix
 #' @import methods
+NULL
 
-# depends on matrix
-.onLoad <- function(libname, pkgname) {
-  library.dynam("xgboost", pkgname, libname)
-}
-.onUnload <- function(libpath) {
-  library.dynam.unload("xgboost", libpath)
+#' Checks if a string is a simple string.
+#'
+#' A simple string is (a) character, (b) length 1, and (c) not blank.
+#' @param string ANY. An R object that must be a length 1 non-blank character.
+#' @examples
+#' \dontrun{
+#' stopifnot(is.simple_string("yay"))
+#' stopifnot(!is.simple_string(NA))
+#' stopifnot(!is.simple_string(NULL))
+#' stopifnot(!is.simple_string(character(0)))
+#' stopifnot(!is.simple_string(letters))
+#' stopifnot(!is.simple_string(""))
+#' }
+is.simple_string <- function(string) {
+  is.character(string) && length(string) == 1 && nzchar(string) && !is.na(string)
 }
 
 # set information into dmatrix, this mutate dmatrix

@@ -4,8 +4,7 @@
 \alias{xgb.importance}
 \title{Show importance of features in a model}
 \usage{
-xgb.importance(feature_names = NULL, filename_dump = NULL, model = NULL,
-  data = NULL, label = NULL, target = function(x) ((x + label) == 2))
+xgb.importance(feature_names, filename_dump)
 }
 \arguments{
 \item{feature_names}{names of each feature as a character vector. Can be extracted from a sparse matrix (see example). If model dump already contains feature names, this argument should be \code{NULL}.}
